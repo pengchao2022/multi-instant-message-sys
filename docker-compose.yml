@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  message-server:
+    build: ./server
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./message_system.db:/app/message_system.db
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=message_system
+    restart: unless-stopped
